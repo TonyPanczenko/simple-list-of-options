@@ -1,0 +1,147 @@
+/* === theme === */
+
+$item-accent-one:               #fa6400;
+$item-accent-two:               #0091ff;
+$ribbon-bg-color:               #ffebb5;
+
+$button-bg-color:               #d8d8d8;
+$i-icon-fill:                   #7f7f7f;
+
+/* === font styles === */
+
+h1 {
+  font-size: 1.5em;
+}
+
+.item {
+  p {
+    font-size: .8em;
+  }
+
+  button {
+    font-size: .8em;
+    font-weight: 700;
+  }
+
+  &::after {
+    font-size: .8em;
+    font-weight: 800;
+  }
+}
+
+body {
+  font-family: sans-serif;
+}
+
+/* === elements === */
+
+* {
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  flex: 0 0 250px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  border: 1px solid grey;
+  border-top: 0;
+  box-shadow: 0px 3px 4px lightgrey;
+  margin: 15px;
+  overflow: hidden;
+
+  button {
+    display: block;
+
+    margin: 10px auto 10px;
+    padding: 10px 25px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    background-color: $button-bg-color;
+    cursor: pointer;
+  }
+
+  &:nth-child(2n) .item-header {
+    border-top: 8px solid $item-accent-two;
+  }
+
+  &.featured::after {
+    position: absolute;
+    right: -45px;
+    top: 15px;
+    transform: rotate3d(0, 0, 1, 35deg);
+    z-index: 100;
+
+    content: "Featured!";
+    background-color: $ribbon-bg-color;
+    text-transform: uppercase;
+    padding: 10px 50px;
+    box-shadow: 0px 2px 5px #222;
+  }
+}
+
+.item-header {
+  position: relative;
+  height: 150px;
+
+  border-top: 8px solid $item-accent-one;
+
+  // could be a background image, but I assumed image might be a part of content
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    // was asked for, should be default anyway:
+    object-position: 50% 50%;
+  }
+
+  h1 {
+    background-color: rgba(#fff, 0.65);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    margin: 0;
+    padding: 8px 15px;
+    border-bottom: 1px solid grey;
+  }
+}
+
+.item-summary {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .info-svg {
+    height: 20px;
+    width: 20px;
+    flex: 0 0 20px;
+
+    margin: 15px;
+    fill: $i-icon-fill;
+  }
+
+  p {
+    flex: 1 0;
+    overflow: hidden;
+
+    margin: 15px 10px 10px 0;
+  }
+}
